@@ -1,4 +1,3 @@
-# File: azure-pipelines.yml
 trigger: none
 
 resources:
@@ -26,27 +25,6 @@ variables:
   - group: Git Repos
 
 stages:
-# - template: AzureDevOps\templates\Azure Test Image.yml
-#   parameters:
-#     dependsOn:
-#     stageName: w22d142Aus
-#     stagedisplayName: w22d142 Aus
-#     jobName: w22d142Aus
-#     jobDisplayname: w22d142 Aus
-#     jobcondition: and(succeeded(), or(eq(variables['Build-w22d-14-2'], 'True'), eq(variables['Build-all'], 'True')))
-#     Version: w22d-14-2
-#     osName: Windows Server 2022
-
-# - template: AzureDevOps\templates\Azure Test Image.yml
-#   parameters:
-#     dependsOn:
-#     stageName: w22d150Aus
-#     stagedisplayName: w22d150 Aus
-#     jobName: w22d150Aus
-#     jobDisplayname: w22d150 Aus
-#     jobcondition: and(succeeded(), or(eq(variables['Build-w22d-15-0'], 'True'), eq(variables['Build-all'], 'True')))
-#     Version: w22d-15-0
-#     osName: Windows Server 2022
 
 - template: AzureDevOps\templates\Azure Test Image.yml
   parameters:
@@ -77,6 +55,33 @@ stages:
     msiURL: $(msiURLv15)
     resourceGroup: BakingDP-Custom-w16d-15-0
 
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w16d142jAus
+    stagedisplayName: w16d142j Aus
+    jobName: w16d142jAus
+    jobDisplayname: w16d142j Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w16d-14-2j'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w16d-14-2j
+    osName: Windows Server 2016 JPN   
+    lansaVersion: V14 SP2
+    msiURL: $(msiURLJPN)
+    resourceGroup: BakingDP-Custom-w16d-14-2j
+
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w16d150jAus
+    stagedisplayName: w16d150j Aus'
+    jobName: w16d150jAus
+    jobDisplayname: w16d150j Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w16d-15-0j'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w16d-15-0j
+    osName: Windows Server 2016 JPN
+    lansaVersion: V15 GA
+    msiURL: $(msiURLJPNLatest)
+    resourceGroup: BakingDP-Custom-w16d-15-0j
 
 - template: AzureDevOps\templates\Azure Test Image.yml
   parameters:
@@ -109,38 +114,10 @@ stages:
 - template: AzureDevOps\templates\Azure Test Image.yml
   parameters:
     dependsOn:
-    stageName: 'w16d142jAus'
-    stagedisplayName: 'w16d142j Aus' 
-    jobName: 'w16d142jAus'
-    jobDisplayname: 'w16d142j Aus'
-    jobcondition: and(succeeded(), or(eq(variables['Build-w16d-14-2j'], 'True'), eq(variables['Build-all'], 'True')))
-    Version: w16d-14-2j
-    osName: Windows Server 2016 JPN   
-    lansaVersion: V14 SP2
-    msiURL: $(msiURLJPN)
-    resourceGroup: BakingDP-Custom-w16d-14-2j
-
-- template: AzureDevOps\templates\Azure Test Image.yml
-  parameters:
-    dependsOn:
-    stageName: 'w16d150jAus'
-    stagedisplayName: 'w16d150j Aus' 
-    jobName: 'w16d150jAus'
-    jobDisplayname: 'w16d150j Aus'
-    jobcondition: and(succeeded(), or(eq(variables['Build-w16d-15-0j'], 'True'), eq(variables['Build-all'], 'True')))
-    Version: w16d-15-0j
-    osName: Windows Server 2016 JPN
-    lansaVersion: V15 GA
-    msiURL: $(msiURLJPNLatest)
-    resourceGroup: BakingDP-Custom-w16d-15-0j
-
-- template: AzureDevOps\templates\Azure Test Image.yml
-  parameters:
-    dependsOn:
-    stageName: 'w19d142jAus'
-    stagedisplayName: 'w19d142j Aus' 
-    jobName: 'w19d142jAus'
-    jobDisplayname: 'w19d142j Aus'
+    stageName: w19d142jAus
+    stagedisplayName: w19d142j Aus'
+    jobName: w19d142jAus
+    jobDisplayname: w19d142j Aus
     jobcondition: and(succeeded(), or(eq(variables['Build-w19d-14-2j'], 'True'), eq(variables['Build-all'], 'True')))
     Version: w19d-14-2j
     osName: Windows Server 2019 JPN
@@ -151,10 +128,10 @@ stages:
 - template: AzureDevOps\templates\Azure Test Image.yml
   parameters:
     dependsOn:
-    stageName: 'w19d150jAus'
-    stagedisplayName: 'w19d150j Aus' 
-    jobName: 'w19d150jAus'
-    jobDisplayname: 'w19d150j Aus'
+    stageName: w19d150jAus
+    stagedisplayName: w19d150j Aus
+    jobName: w19d150jAus
+    jobDisplayname: w19d150j Aus
     jobcondition: and(succeeded(), or(eq(variables['Build-w19d-15-0j'], 'True'), eq(variables['Build-all'], 'True')))
     Version: w19d-15-0j
     osName: Windows Server 2019 JPN
@@ -162,19 +139,77 @@ stages:
     msiURL: $(msiURLJPNLatest)
     resourceGroup: BakingDP-Custom-w19d-15-0j
 
-- stage: 'PublishPreviewImages'
-  displayName: 'Publish Preview Images'
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w22d142Aus
+    stagedisplayName: w22d142 Aus
+    jobName: w22d142Aus
+    jobDisplayname: w22d142 Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w22d-14-2'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w22d-14-2
+    osName: Windows Server 2022
+    lansaVersion: V14 SP2
+    msiURL: $(msiURLv142)
+    resourceGroup: BakingDP-Custom-w22d-14-2
+
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w22d150Aus
+    stagedisplayName: w22d150 Aus
+    jobName: w22d150Aus
+    jobDisplayname: w22d150 Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w22d-15-0'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w22d-15-0
+    osName: Windows Server 2022
+    lansaVersion: V15 GA
+    msiURL: $(msiURLv15)
+    resourceGroup: BakingDP-Custom-w22d-15-0
+    
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w22d142jAus
+    stagedisplayName: w22d142j Aus
+    jobName: w22d142jAus
+    jobDisplayname: w22d142j Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w22d-14-2j'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w22d-14-2j
+    osName: Windows Server 2022 JPN
+    lansaVersion: V14 SP2
+    msiURL: $(msiURLJPN)
+    resourceGroup: BakingDP-Custom-w22d-14-2j
+
+- template: AzureDevOps\templates\Azure Test Image.yml
+  parameters:
+    dependsOn:
+    stageName: w22d150jAus
+    stagedisplayName: w22d150j Aus
+    jobName: w22d150jAus
+    jobDisplayname: w22d150j Aus
+    jobcondition: and(succeeded(), or(eq(variables['Build-w22d-15-0j'], 'True'), eq(variables['Build-all'], 'True')))
+    Version: w22d-15-0j
+    osName: Windows Server 2022 JPN
+    lansaVersion: V15 GA
+    msiURL: $(msiURLJPNLatest)
+    resourceGroup: BakingDP-Custom-w22d-15-0j
+    
+- stage: PublishPreviewImages
+  displayName: Publish Preview Images
   dependsOn: 
-    # - w22d150Aus
-    # - w22d150Aus
     - w16d142Aus
     - w16d150Aus
+    - w16d142jAus
+    - w16d150jAus    
     - w19d142Aus
     - w19d150Aus
-    - w16d142jAus
-    - w16d150jAus
     - w19d142jAus
     - w19d150jAus
+    - w22d142Aus
+    - w22d150Aus
+    - w22d142jAus
+    - w22d150jAus
 
   jobs: 
   - job: 'AgentlessJob'
