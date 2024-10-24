@@ -216,7 +216,7 @@ stages:
     displayName: Agentless job
     pool: server
     steps:
-    - task: ManualValidation@0
+    - task: ManualValidation@1
       displayName: Publish Preview Images
       timeoutInMinutes: 43200 # 30 Days
       inputs:
