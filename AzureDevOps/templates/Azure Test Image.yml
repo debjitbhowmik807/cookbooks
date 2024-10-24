@@ -43,9 +43,8 @@ parameters:
   - name: jobcondition
     type: string
     default: none
-  # - name: CollationJPN
-  #   type: string
-  #   default: $(Collation_JPN)
+  - name: continueOnError
+    default: false
 
 stages:
   - stage: ${{ parameters.stageName }}
@@ -159,7 +158,7 @@ stages:
           targetType: filePath
           filePath: '$(Pipeline.Workspace)/_robe070_cookbooks/scripts/azure_url_tests.ps1'
           arguments: -deploymentOutput '$(deploymentOutput)'
-          errorActionPreference: 'continue'
+        continueOnError: true
         condition: and(succeeded(), eq(variables['Gate.IsEnabled'], 'True'))
         
 
