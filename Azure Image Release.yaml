@@ -212,12 +212,12 @@ stages:
     - w22d150jAus
 
   jobs: 
-  - job: 'AgentlessJob'
-    displayName: 'Agentless job'
+  - job: AgentlessJob
+    displayName: Agentless job
     pool: server
     steps:
-    - task: ManualIntervention@8
-      displayName: 'Publish Preview Images'
+    - task: ManualValidation@0
+      displayName: Publish Preview Images
       timeoutInMinutes: 43200 # 30 Days
       inputs:
         instructions: |
