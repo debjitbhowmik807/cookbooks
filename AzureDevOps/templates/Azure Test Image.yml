@@ -43,7 +43,7 @@ parameters:
   - name: jobcondition
     type: string
     default: none
-  - name: continueOnError
+  - name: continueOnError_URLTests
     default: false
 
 stages:
@@ -158,7 +158,7 @@ stages:
           targetType: filePath
           filePath: '$(Pipeline.Workspace)/_robe070_cookbooks/scripts/azure_url_tests.ps1'
           arguments: -deploymentOutput '$(deploymentOutput)'
-        continueOnError: true
+        continueOnError: ${{ parameters.continueOnError_URLTests }}
         condition: and(succeeded(), eq(variables['Gate.IsEnabled'], 'True'))
         
 
