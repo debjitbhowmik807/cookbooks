@@ -8,7 +8,7 @@ resources:
     - repository: _lansa_azure_quickstart_templates
       type: github
       endpoint: debjitbhowmik807
-      name: lansa/azure-quickstart-templates
+      name: debjitbhowmik807/azure-quickstart-templates
       ref: support/scalable
     - repository: _CelestialSystem_azure_quickstart_templates
       type: github
