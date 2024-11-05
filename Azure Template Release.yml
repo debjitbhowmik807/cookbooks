@@ -490,6 +490,11 @@ stages:
       displayName: 'Artifact Check - Output Gate Variable'
 
     - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'gci "$($env:Pipeline_Workspace)/_lansa_azure_quickstart_templates"'
+        
+    - task: PowerShell@2
       displayName: 'Write access to Git Repo'
       inputs:
         targetType: filePath
