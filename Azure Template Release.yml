@@ -499,6 +499,11 @@ stages:
           write-host "#####################"
           git branch -a
           write-host "#####################"
+          git switch support/scalable
+          write-host "#####################"
+          git branch
+          write-host "#####################"
+          
         
     - task: PowerShell@2
       displayName: 'Write access to Git Repo'
