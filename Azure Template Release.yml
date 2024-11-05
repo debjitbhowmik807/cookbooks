@@ -496,7 +496,9 @@ stages:
         script: |
           cd "$($env:Pipeline_Workspace)/_lansa_azure_quickstart_templates"
           gci
+          write-host "#####################"
           git branch -a
+          write-host "#####################"
         
     - task: PowerShell@2
       displayName: 'Write access to Git Repo'
