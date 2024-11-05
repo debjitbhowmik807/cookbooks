@@ -489,21 +489,8 @@ stages:
         }
       displayName: 'Artifact Check - Output Gate Variable'
 
-    - task: PowerShell@2
-      displayName: 'List Branch'
-      inputs:
-        targetType: 'inline'
-        script: |
-          cd "$($env:Pipeline_Workspace)/_lansa_azure_quickstart_templates"
-          gci
-          write-host "#####################"
-          git branch -a
-          write-host "#####################"
-          git switch support/scalable
-          write-host "#####################"
-          git branch
-          write-host "#####################"
-          
+    - pwsh: git checkout support/scalable
+      displayName: Explicitly checking out support/scalable
         
     - task: PowerShell@2
       displayName: 'Write access to Git Repo'
