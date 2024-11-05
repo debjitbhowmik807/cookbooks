@@ -493,7 +493,10 @@ stages:
       displayName: 'List Branch'
       inputs:
         targetType: 'inline'
-        script: 'git branch -a'
+        script: |
+          cd "$($env:Pipeline_Workspace)/_lansa_azure_quickstart_templates"
+          gci
+          git branch -a
         
     - task: PowerShell@2
       displayName: 'Write access to Git Repo'
